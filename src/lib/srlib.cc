@@ -23,6 +23,10 @@
 #include "messip_dataport.h"
 #endif
 
+#if !defined(_QNXNTO_)
+#include "timex.h"
+#endif
+
 namespace mrrocpp {
 namespace lib {
 
@@ -153,7 +157,11 @@ int sr::send_package_to_sr(const sr_package_t & sr_mess)
 #endif /* !USE_MESSIP_SRR */
 
 int sr::send_package(void) {
-	clock_gettime(CLOCK_REALTIME, &sr_message.ts);
+	struct timespec ts;
+	clock_gettime(CLOCK_REALTIME, &ts);
+
+	sr_message.time = timespec2nsec(ts);
+
 	if (!multi_thread)
 	{
 		return send_package_to_sr(sr_message);

@@ -23,6 +23,10 @@
 #include "messip_dataport.h"
 #endif
 
+#if !defined(_QNXNTO_)
+#include "lib/timex.h"
+#endif
+
 enum
 {
 	COL_TIMESTAMP = 0,
@@ -149,9 +153,10 @@ void *sr_thread(void* arg)
 		{
 			// write to UI console
 			char timestamp[16];
-
-			strftime(timestamp, 100, "%H:%M:%S", localtime(&sr_msg.ts.tv_sec));
-			sprintf(timestamp+8, ".%03ld", sr_msg.ts.tv_nsec/1000000);
+			timespec ts;
+			ts = nsec2timespec(sr_msg.time);
+			strftime(timestamp, 100, "%H:%M:%S", localtime(&ts.tv_sec));
+			sprintf(timestamp+8, ".%03ld", ts.tv_nsec/1000000);
 
 			GtkTreeIter iter;
 			gtk_list_store_append (store, &iter);
@@ -172,8 +177,8 @@ void *sr_thread(void* arg)
 
 			snprintf(current_line, 100, "%-10s", sr_msg.host_name);
 			strcat(current_line, "  ");
-			strftime(current_line+12, 100, "%H:%M:%S", localtime(&sr_msg.ts.tv_sec));
-			sprintf(current_line+20, ".%03ld   ", sr_msg.ts.tv_nsec/1000000);
+			strftime(current_line+12, 100, "%H:%M:%S", localtime(&ts.tv_sec));
+			sprintf(current_line+20, ".%03ld   ", ts.tv_nsec/1000000);
 
 			switch (sr_msg.process_type) {
 				case EDP:

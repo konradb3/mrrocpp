@@ -45,13 +45,12 @@ typedef struct sr_package
 #if !defined(USE_MESSIP_SRR)
 	msg_header_t hdr;
 #endif
-	struct timespec ts; // czas generacji wiadomosci
+	uint64_t time; // czas generacji wiadomosci
 	process_type_t process_type; // rodzaj procesu
 	int16_t message_type; // typ wiadomosci: blad lub komunikat
 	char process_name[NAME_LENGTH]; // nazwa globalna procesu np: /irp6_on_track/EDP1
 	char host_name[NAME_LENGTH]; // nazwa hosta na ktorym uruchamiany jest proces
 	char description[TEXT_LENGTH]; // tresc wiadomosci
-	//  sr_package();
 } /*__attribute__((__packed__))*/sr_package_t; // not packed in case of msg_header_t
 
 /* -------------------------------------------------------------------- */
