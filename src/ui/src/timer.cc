@@ -65,11 +65,14 @@ int OnTimer(PtWidget_t *widget, ApInfo_t *apinfo, PtCallbackInfo_t *cbinfo)
 
 			ui_sr_obj->get_one_msg(sr_msg);
 
+			timespec ts;
+			nsec2timespec(&ts, sr_msg.time);
+
 			snprintf(current_line, 100, "%-10s", sr_msg.host_name);
 			strcat(current_line, "  ");
 			strftime(current_line + 12, 100, "%H:%M:%S", localtime(
-					&sr_msg.ts.tv_sec));
-			sprintf(current_line + 20, ".%03d   ", sr_msg.ts.tv_nsec / 1000000);
+					&ts.tv_sec));
+			sprintf(current_line + 20, ".%03d   ", ts.tv_nsec / 1000000);
 
 			switch (sr_msg.process_type) {
 			case lib::EDP:
