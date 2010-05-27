@@ -154,7 +154,7 @@ void *sr_thread(void* arg)
 			// write to UI console
 			char timestamp[16];
 			timespec ts;
-			ts = nsec2timespec(sr_msg.time);
+			nsec2timespec(&ts, sr_msg.time);
 			strftime(timestamp, 100, "%H:%M:%S", localtime(&ts.tv_sec));
 			sprintf(timestamp+8, ".%03ld", ts.tv_nsec/1000000);
 

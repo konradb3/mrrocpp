@@ -10,8 +10,8 @@
 #ifndef TIMEX_H_
 #define TIMEX_H_
 
-uint64_t timespec2nsec(const timespec& ts);
+uint64_t timespec2nsec(const timespec *t);
 
-timespec nsec2timespec(uint64_t ns);
+void nsec2timespec(struct timespec *t, uint64_t ns);
 
 #endif /* TIMEX_H_ */

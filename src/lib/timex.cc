@@ -7,17 +7,16 @@
 #include "timex.h"
 
 #if !defined(__QNXNTO__)
-uint64_t timespec2nsec(const timespec& ts)
+
+uint64_t timespec2nsec(const struct timespec *t)
 {
-	return (ts.tv_sec * 1000000 + ts.tv_nsec);
+	return t->tv_sec * 1000000 + t->tv_nsec;
 }
 
-timespec nsec2timespec(uint64_t ns)
+void nsec2timespec(struct timespec *t, uint64_t nsec)
 {
-	timespec ts;
-	ts.tv_sec = ns/1000000;
-	ts.tv_nsec = ns%1000000;
-
-	return ts;
+	t->tv_sec = nsec / 1000000;
+	t->tv_nsec = nsec % 1000000;
 }
+
 #endif

@@ -160,7 +160,7 @@ int sr::send_package(void) {
 	struct timespec ts;
 	clock_gettime(CLOCK_REALTIME, &ts);
 
-	sr_message.time = timespec2nsec(ts);
+	sr_message.time = timespec2nsec(&ts);
 
 	if (!multi_thread)
 	{

@@ -32,16 +32,7 @@
 using namespace mrrocpp::lib::exception;
 
 #ifndef __QNXNTO__
-
-uint64_t timespec2nsec(const timespec *t) {
-	return t->tv_sec * 1000000 + t->tv_nsec;
-}
-
-void nsec2timespec(timespec *t, uint64_t nsec) {
-	t->tv_sec = nsec / 1000000;
-	t->tv_nsec = nsec % 1000000;
-}
-
+#include "lib/timex.h"
 #endif
 
 namespace mrrocpp {
