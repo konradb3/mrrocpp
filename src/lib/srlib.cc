@@ -23,7 +23,7 @@
 #include "messip_dataport.h"
 #endif
 
-#if !defined(_QNXNTO_)
+#if !defined(__QNXNTO__)
 #include "timex.h"
 #endif
 

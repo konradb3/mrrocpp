@@ -35,8 +35,8 @@
 namespace mrrocpp {
 namespace lib {
 
-#define ECP_EDP_SERIALIZED_COMMAND_SIZE 1000
-#define EDP_ECP_SERIALIZED_REPLY_SIZE 1000
+#define ECP_EDP_SERIALIZED_COMMAND_SIZE 500
+#define EDP_ECP_SERIALIZED_REPLY_SIZE 500
 
 //------------------------------------------------------------------------------
 /*!
@@ -908,7 +908,7 @@ struct r_buffer {
 	uint8_t analog_input[8];
 	controller_state_t controller_state;
 	/*! Number of the servo step. */
-	unsigned long servo_step;
+	uint32_t servo_step;
 	/*! Given values for PWM fill (Phase Wave Modulation) - (usualy unnecessary). */
 	int16_t PWM_value[MAX_SERVOS_NR];
 	/*! Control current - (usualy unnecessary). */

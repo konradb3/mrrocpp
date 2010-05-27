@@ -6,7 +6,7 @@
  */
 #include "timex.h"
 
-#if !defined(_QNXNTO_)
+#if !defined(__QNXNTO__)
 uint64_t timespec2nsec(const timespec& ts)
 {
 	return (ts.tv_sec * 1000000 + ts.tv_nsec);

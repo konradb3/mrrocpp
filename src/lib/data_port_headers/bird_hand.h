@@ -59,12 +59,9 @@ struct bird_hand_configuration {
 	int value_of_upper_limit_of_absolute_position[BIRD_HAND_NUM_OF_SERVOS];
 	int value_of_lower_limit_of_absolute_position[BIRD_HAND_NUM_OF_SERVOS];
 	int value_of_upper_limit_of_meassured_current[BIRD_HAND_NUM_OF_SERVOS];
-	int
-			value_of_upper_limit_of_absolute_value_of_torque[BIRD_HAND_NUM_OF_SERVOS];
-	int
-			value_of_lower_limit_of_absolute_value_of_torque[BIRD_HAND_NUM_OF_SERVOS];
-	int
-			value_of_lower_limit_of_absolute_value_of_meassured_torque[BIRD_HAND_NUM_OF_SERVOS];
+	int value_of_upper_limit_of_absolute_value_of_torque[BIRD_HAND_NUM_OF_SERVOS];
+	int value_of_lower_limit_of_absolute_value_of_torque[BIRD_HAND_NUM_OF_SERVOS];
+	int value_of_lower_limit_of_absolute_value_of_meassured_torque[BIRD_HAND_NUM_OF_SERVOS];
 	int value_of_upper_limit_of_position_increment[BIRD_HAND_NUM_OF_SERVOS];
 };
 
